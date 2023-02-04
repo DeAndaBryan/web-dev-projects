@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        nav{
+            overflow: hidden;
+            background-color: green;
+        }
+        nav a{
+            float: left;
+            color: white;
+            text-decoration: none;
+            padding: 14px 16px;
+        }
+        .dropdown{
+            float: left;
+            overflow: hidden;
+        }
+        .dropdown .tab{
+            color: black;
+            margin: 0;
+        }
+        nav a:hover, .dropdown:hover .tab{
+            background-color: lightgreen;
+        }
+        .content{
+            display: none;
+            position: absolute;
+            background-color: lightgreen;
+        }
+        .content a{
+            float: none;    
+            display: block;
+            color: black;
+            text-align: left;
+        }
+        .content a:hover{
+            background-color: greenyellow;
+        }
+        .dropdown:hover .content{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="dropdown">
+            <a class="tab" href="">File</a>
+            <div class="content">
+                <a href="">New</a>
+                <a href="">Open</a>
+                <a href="">Save</a>
+                <a href="">Print</a>
+                <a href="">Close</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
