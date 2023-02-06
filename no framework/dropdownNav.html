@@ -6,50 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar Example</title>
     <style>
-        *{
-            box-sizing: border-box;
-        }
         body{
             padding: 0;
             margin: 0;
+            background-color: rgb(194, 245, 194);
+            font-family: Arial, Helvetica, sans-serif;
         }
         nav{
-            overflow: hidden;
             background-color: green;
         }
-        nav a{
-            float: left;
-            color: white;
-            text-decoration: none;
-            padding: 14px 16px;
+        .dropdown {
+            padding: 5px 16px;
+            display: inline-block;
+            position: relative;
         }
-        .dropdown{
-            float: left;
-            overflow: hidden;
-        }
-        .dropdown .tab{
-            color: black;
-            margin: 0;
-        }
-        nav a:hover, .dropdown:hover .tab{
-            background-color: lightgreen;
-        }
-        .content{
+        .content {
             display: none;
             position: absolute;
-            background-color: lightgreen;
+            margin-left: -15px;
+            width: 100%;
+            overflow: auto;
         }
-        .content a{
-            float: none;    
+        .dropdown:hover .content {
             display: block;
+            margin-block-start: 5px;
+            background-color: rgb(2, 185, 2);
+            color: darkblue;
+        }
+        .dropdown:hover{
+            background-color: rgb(2, 185, 2);
+        }
+        .dropdown> a{
             color: black;
-            text-align: left;
+            text-decoration: none;
+            font-size: large;
         }
-        .content a:hover{
-            background-color: greenyellow;
-        }
-        .dropdown:hover .content{
+        .content a {
+            padding: 5px;
             display: block;
+            color: darkblue;
+            text-decoration: none;
+        }
+        .content a:hover {
+            background-color: rgb(2, 250, 2);
+        }
+        .alert{
+            background-color: white;
+            border-left: 5px solid green;
+            padding: 15px;
+            margin: 25px;
+            margin-left: 250px;
+            margin-right: 250px;
+        }
+        .yellow{
+            border-color: yellow;
         }
 
     </style>
@@ -57,7 +67,7 @@
 <body>
     <nav>
         <div class="dropdown">
-            <a class="tab" href="">File</a>
+            <a href="">File</a>
             <div class="content">
                 <a href="">New</a>
                 <a href="">Open</a>
@@ -66,6 +76,49 @@
                 <a href="">Close</a>
             </div>
         </div>
+        <div class="dropdown">
+            <a href="">Edit</a>
+            <div class="content">
+                <a href="">Undo</a>
+                <a href="">Redo</a>
+                <a href="">Cut</a>
+                <a href="">Copy</a>
+                <a href="">Paste</a>
+                <a href="">Delete</a>
+                <a href="">Select All</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="">View</a>
+            <div class="content">
+                <a href="">Zoom In</a>
+                <a href="">Zoom Out</a>
+                <a href="">Actual Size</a>
+                <a href="">Fit Page</a>
+                <a href="">Fit Width</a>
+                <a href="">Fit Height</a>
+                <a href="">Rotate Left</a>
+                <a href="">Rotate Right</a>
+                <a href="">Full Screen</a>
+            </div>
+        </div>
     </nav>
+
+    <div class="alert">
+        <h3>Instructions</h3>
+            <p>
+                Recreate this page using <b><i>only CSS</i></b>. 
+                Do yourself a favor and 1) Do not view the source. 
+                Figure it out yourself. 2) Do not search for the solution. 
+                Learn CSS until you know enough to do this.
+            </p>
+    </div>
+    <div class="alert yellow">
+        <h3>Extra Credit</h3>
+            <p>Notice how the Edit menu (besides for not being bold) reacts to clicks. 
+                If you click the edit menu, it remains open until you click somewhere else. 
+                (This you might need to search for)
+            </p>
+    </div>
 </body>
 </html>
