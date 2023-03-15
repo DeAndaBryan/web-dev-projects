@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router';
     <nav class="navbar is-primary">
         <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="https://bulma.io">
+          <a class="navbar-item" href="">
             
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
             
@@ -20,44 +20,77 @@ import { RouterLink } from 'vue-router';
       
         <div class="navbar-menu" >
           <div class="navbar-start">
-
-            <RouterLink to="/" class="navbar-item">Home</RouterLink>
-            <RouterLink to="/about" class="navbar-item">About</RouterLink>
-            <RouterLink to="/products" class="navbar-item">Products</RouterLink>
-
-
+            <a class="navbar-item">
+                <span class="icon">
+                    <i class="fas fa-running"></i>
+                </span>
+                My Activity
+            </a>
+            <a class="navbar-item">
+                <span class="icon">
+                    <i class="fas fa-chart-line"></i>
+                </span>
+                &nbsp Statistics
+            </a>
+            <a class="navbar-item">
+                <span class="icon">
+                    <i class="fas fa-user-group"></i>
+                </span>
+                &nbsp Friends Activity
+            </a>
+            <a class="navbar-item">
+                <span class="icon">
+                    <i class="fas fa-magnifying-glass"></i>
+                </span>
+                &nbsp People Search
+            </a>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="https://bulma.io/documentation/overview/start/">
-                Docs
+              <a class="navbar-link">
+                Admin
               </a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-                  Overview
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-                  Modifiers
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                  Columns
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                  Layout
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                  Form
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                  Elements
-                </a>
-                <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                  Components
+                <a class="navbar-item" href="">
+                  Users
                 </a>
               </div>
             </div>
           </div>
       
           <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary">
+                        <strong>Sign Up</strong>
+                    </a>
+                    <div class="dropdown is-active">
+                        <div class="dropdown-trigger">
+                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                                <span>Log in</span>
+                                <span class="icon is-small">
+                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                            <div class="dropdown-content">
+                                <a class="dropdown-item">
+                                    Moshe
+                                </a>
+                                <a class="dropdown-item">
+                                    Kamala Harris
+                                </a>
+                                <a class="dropdown-item">
+                                    John Smith
+                                </a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item">
+                                    Other Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
@@ -70,14 +103,7 @@ import { RouterLink } from 'vue-router';
                     </span>
                   </a>
                 </p>
-                <p class="control">
-                  <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip">
-                    <span class="icon">
-                      <i class="fas fa-download"></i>
-                    </span>
-                    <span>Download</span>
-                  </a>
-                </p>
+                
               </div>
             </div>
           </div>
