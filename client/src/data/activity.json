@@ -1,0 +1,16 @@
+{
+    "activity": [
+        {
+            "id": 1,
+            "fullname": "Full Name 1",
+            "name": "Activity 1",
+            "description": "Description 1",
+            "date": "2016-01-01",
+            "time": "12:00:00",
+            "location": "Location 1",
+            "image": "http://www.example.com/image1.jpg",
+            "distance": 1.0,
+            "duration": 1.0
+        }
+    ]
+}

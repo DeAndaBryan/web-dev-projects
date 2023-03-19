@@ -1,17 +1,29 @@
 {
     "User": [
         {
+            "id": 1,
             "name": "Barack Obama",
-            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FBarack_Obama&psig=AOvVaw2Bq9MApdHt4DisHJljSHIT&ust=1679187858591000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJD13K2k5P0CFQAAAAAdAAAAABAE",
+            "firstname": "Barack",
+            "lastname": "Obama",
+            "email": "BarackObama@gmail.com",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg",
             "admin": true
         },
         {
+            "id": 2,
             "name": "John Doe",
-            "photo": "https://static.wikia.nocookie.net/unidentified/images/b/b0/UP_15453.jpg/revision/latest?cb=20200404063004", 
+            "firstname": "John",
+            "lastname": "Doe",
+            "email": "JohnDoe@gmail.com",
+            "photo": "https://www.fbi.gov/wanted/vicap/unidentified-persons/john-doe-21/@@images/image", 
             "admin": false
         },
         {
+            "id": 3,
             "name": "Elon Musk",
+            "firstname": "Elon",
+            "lastname": "Musk",
+            "email": "ElonMusk@gmail.com",
             "photo": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
             "admin": false
         }

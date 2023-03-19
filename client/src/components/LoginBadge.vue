@@ -15,7 +15,8 @@
 
 <template>
     <div class="navbar-item" v-if="session.user">
-        Welcome, {{ session.user.name }}
+        <img :src="session.user.photo">
+        &nbsp {{ session.user.name }}
     </div>
     <div class="navbar-item" v-if="session.user">
         <div class="button">
@@ -45,20 +46,6 @@
                                         {{ user.name }}
                                     </a>
                                 </div>
-                                <!--<a class="dropdown-item" @click="login()">
-                                    Moshe
-                                </a>
-                                <a class="dropdown-item">
-                                    Kamala Harris
-                                </a>
-                                <a class="dropdown-item">
-                                    John Smith
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item">
-                                    Other Account
-                                </a>-->
-
                             </div>
                         </div>
                     </div>
@@ -69,5 +56,9 @@
 
 
 <style scoped>
-
+img{
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+}
 </style>

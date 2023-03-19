@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { useSession } from '@/model/session';
+import { ref } from 'vue';
   import { RouterLink } from 'vue-router';
   import LoginBadge from './LoginBadge.vue'
 
-
+  const session = useSession(); 
   const isDropdownActive = ref(false);
   const isMenuActive = ref(false);
 
@@ -49,20 +50,20 @@
                 </span>
                 &nbsp Friends Activity
             </a>
-            <a class="navbar-item">
+            <RouterLink class="navbar-item" to="/people">
                 <span class="icon">
                     <i class="fas fa-magnifying-glass"></i>
                 </span>
                 &nbsp People Search
-            </a>
+            </RouterLink>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                 Admin
               </a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="">
+                <RouterLink class="navbar-item" to="/admin" v-if="session.user?.admin == true">
                   Users
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>
