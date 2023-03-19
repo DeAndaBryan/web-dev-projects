@@ -1,9 +1,14 @@
+
+import { login } from '@/model/session'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import StatisticsVue from '@/components/Statistics.vue'
+import { useSession } from '@/model/session'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {path: '/Statistics', name: 'Statistics', component: StatisticsVue},
     {
       path: '/',
       name: 'home',

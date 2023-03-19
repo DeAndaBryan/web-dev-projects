@@ -1,0 +1,19 @@
+{
+    "User": [
+        {
+            "name": "Barack Obama",
+            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FBarack_Obama&psig=AOvVaw2Bq9MApdHt4DisHJljSHIT&ust=1679187858591000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCJD13K2k5P0CFQAAAAAdAAAAABAE",
+            "admin": true
+        },
+        {
+            "name": "John Doe",
+            "photo": "https://static.wikia.nocookie.net/unidentified/images/b/b0/UP_15453.jpg/revision/latest?cb=20200404063004", 
+            "admin": false
+        },
+        {
+            "name": "Elon Musk",
+            "photo": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
+            "admin": false
+        }
+    ]
+}

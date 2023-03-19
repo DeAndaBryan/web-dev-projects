@@ -1,5 +1,16 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
+  import { ref } from 'vue';
+  import { RouterLink } from 'vue-router';
+  import LoginBadge from './LoginBadge.vue'
+
+
+  const isDropdownActive = ref(false);
+  const isMenuActive = ref(false);
+
+  function toggleMenu() {
+    isMenuActive.value = !isMenuActive.value;
+    }
+
 </script>
 
 <template>
@@ -11,14 +22,14 @@ import { RouterLink } from 'vue-router';
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
             
           </a>
-          <div class="navbar-burger" >
+          <div class="navbar-burger" :class="{'is-active': isMenuActive}" @click="toggleMenu">
             <span></span>
             <span></span>
             <span></span>
           </div>
         </div>
       
-        <div class="navbar-menu" >
+        <div class="navbar-menu" :class="{'is-active': isMenuActive}">
           <div class="navbar-start">
             <a class="navbar-item">
                 <span class="icon">
@@ -26,12 +37,12 @@ import { RouterLink } from 'vue-router';
                 </span>
                 My Activity
             </a>
-            <a class="navbar-item">
+            <RouterLink to="/Statistics" class="navbar-item">
                 <span class="icon">
                     <i class="fas fa-chart-line"></i>
                 </span>
                 &nbsp Statistics
-            </a>
+            </RouterLink>
             <a class="navbar-item">
                 <span class="icon">
                     <i class="fas fa-user-group"></i>
@@ -57,40 +68,7 @@ import { RouterLink } from 'vue-router';
           </div>
       
           <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <a class="button is-primary">
-                        <strong>Sign Up</strong>
-                    </a>
-                    <div class="dropdown is-active">
-                        <div class="dropdown-trigger">
-                            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>Log in</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                            <div class="dropdown-content">
-                                <a class="dropdown-item">
-                                    Moshe
-                                </a>
-                                <a class="dropdown-item">
-                                    Kamala Harris
-                                </a>
-                                <a class="dropdown-item">
-                                    John Smith
-                                </a>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item">
-                                    Other Account
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <LoginBadge />
             <div class="navbar-item">
               <div class="field is-grouped">
                 <p class="control">
