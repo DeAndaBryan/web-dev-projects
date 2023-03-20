@@ -7,10 +7,13 @@ import { useSession } from '@/model/session'
 import LoginVue from '@/views/Login.vue'
 import AdminViewVue from '@/views/AdminView.vue'
 import PeopleSearchVue from '@/views/PeopleSearch.vue'
+import MyActivityVue from '@/views/MyActivity.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {path: '/myActivity', name: 'myActivity', component: MyActivityVue},
     {path: '/login', name: 'login', component: LoginVue},
     {path: '/Statistics', name: 'Statistics', component: StatisticsVue},
     {path: '/admin', name: 'admin', component: AdminViewVue},

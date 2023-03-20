@@ -32,12 +32,12 @@ import { ref } from 'vue';
       
         <div class="navbar-menu" :class="{'is-active': isMenuActive}">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <RouterLink class="navbar-item" to="/myActivity">
                 <span class="icon">
                     <i class="fas fa-running"></i>
                 </span>
                 My Activity
-            </a>
+            </RouterLink>
             <RouterLink to="/Statistics" class="navbar-item">
                 <span class="icon">
                     <i class="fas fa-chart-line"></i>

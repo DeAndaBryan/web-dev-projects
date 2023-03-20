@@ -1,6 +1,6 @@
-import activity from "../data/activity.json";
+import data from "../data/workouts.json";
 
-export interface Activity {
+export interface Workout {
     id: number;
     fullname: string;
     name: string;
@@ -13,6 +13,6 @@ export interface Activity {
     duration: number;
 }
 
-export function getActivity(): Activity[] {
-    return activity.activity;
+export function getWorkout(): Workout[] {
+    return data.workouts;
 }

@@ -1,0 +1,40 @@
+{
+    "workouts": [
+        {
+            "id": 1,
+            "fullname": "Barack Obama",
+            "name": "Running",
+            "description": "Ran around campus",
+            "date": "2016-01-01",
+            "time": "12:00:00",
+            "location": "SUNY New Paltz",
+            "image": "http://www.example.com/image1.jpg",
+            "distance": 2.0,
+            "duration": 1.0
+        },
+        {
+            "id": 1,
+            "fullname": "Barack Obama",
+            "name": "Biking",
+            "description": "Biked through New Paltz",
+            "date": "2016-01-02",
+            "time": "12:00:00",
+            "location": "New Paltz",
+            "image": "https://www.rei.com/dam/content_team_080317_61569_mountain_biking_beginners_lg.jpg",
+            "distance": 2.0,
+            "duration": 1.0
+        },
+        {
+            "id": 2,
+            "fullname": "John Doe",
+            "name": "Activity 3",
+            "description": "Description 3",
+            "date": "2016-01-03",
+            "time": "12:00:00",
+            "location": "Location 3",
+            "image": "http://www.example.com/image3.jpg",
+            "distance": 3.0,
+            "duration": 3.0
+        }
+    ]
+}
