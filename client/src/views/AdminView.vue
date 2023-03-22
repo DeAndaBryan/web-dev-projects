@@ -29,6 +29,7 @@ const users = ref(getUsers());
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Handle</th>
                     <th>Is Admin</th>
                     <th></th>
                 </tr>
@@ -41,6 +42,7 @@ const users = ref(getUsers());
                     <td>{{ user.firstname }}</td>
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{{ user.handle }}</td>
                     <td>{{ user.admin }}</td>
                     <td>
                         <button class="button is-primary">

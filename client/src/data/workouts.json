@@ -5,10 +5,10 @@
             "fullname": "Barack Obama",
             "name": "Running",
             "description": "Ran around campus",
-            "date": "2016-01-01",
+            "date": "2023-03-18",
             "time": "12:00:00",
             "location": "SUNY New Paltz",
-            "image": "http://www.example.com/image1.jpg",
+            "image": "https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/01/Runner-training-on-running-track-1296x728-header-1296x728.jpg?w=1155&h=1528",
             "distance": 2.0,
             "duration": 1.0
         },
@@ -17,7 +17,7 @@
             "fullname": "Barack Obama",
             "name": "Biking",
             "description": "Biked through New Paltz",
-            "date": "2016-01-02",
+            "date": "2023-03-19",
             "time": "12:00:00",
             "location": "New Paltz",
             "image": "https://www.rei.com/dam/content_team_080317_61569_mountain_biking_beginners_lg.jpg",
@@ -27,14 +27,26 @@
         {
             "id": 2,
             "fullname": "John Doe",
-            "name": "Activity 3",
-            "description": "Description 3",
-            "date": "2016-01-03",
+            "name": "Swimming",
+            "description": "Swam laps in the pool",
+            "date": "2023-03-20",
             "time": "12:00:00",
-            "location": "Location 3",
-            "image": "http://www.example.com/image3.jpg",
+            "location": "SUNY New Paltz",
+            "image": "https://img.olympicchannel.com/images/image/private/t_s_pog_staticContent_hero_lg_2x/f_auto/primary/piultz6nngltq541xmju",
             "distance": 3.0,
             "duration": 3.0
+        },
+        {
+            "id": 3,
+            "fullname": "Elon Musk",
+            "name": "Running",
+            "description": "Had fun running around the Tesla factory",
+            "date": "2023-03-21",
+            "time": "12:00:00",
+            "location": "Tesla Factory, TX",
+            "image": "https://ei.marketwatch.com/Multimedia/2020/06/04/Photos/ZH/MW-IH879_tesla0_20200604064056_ZH.jpg?uuid=df522756-a64f-11ea-b8a3-9c8e992d421e",
+            "distance": 4.0,
+            "duration": 2.0
         }
     ]
 }

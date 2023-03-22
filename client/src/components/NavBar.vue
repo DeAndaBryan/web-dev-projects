@@ -18,11 +18,11 @@ import { ref } from 'vue';
     <nav class="navbar is-primary">
         <div class="container">
         <div class="navbar-brand">
-          <a class="navbar-item" href="">
+          <RouterLink to="/" class="navbar-item" href="">
             
             <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="22" height="22" />
             
-          </a>
+          </RouterLink>
           <div class="navbar-burger" :class="{'is-active': isMenuActive}" @click="toggleMenu">
             <span></span>
             <span></span>
@@ -44,12 +44,12 @@ import { ref } from 'vue';
                 </span>
                 &nbsp Statistics
             </RouterLink>
-            <a class="navbar-item">
+            <RouterLink class="navbar-item" to="/friends">
                 <span class="icon">
                     <i class="fas fa-user-group"></i>
                 </span>
                 &nbsp Friends Activity
-            </a>
+            </RouterLink>
             <RouterLink class="navbar-item" to="/people">
                 <span class="icon">
                     <i class="fas fa-magnifying-glass"></i>

@@ -7,7 +7,8 @@
             "lastname": "Obama",
             "email": "BarackObama@gmail.com",
             "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg",
-            "admin": true
+            "admin": true,
+            "handle": "@BarackObama"
         },
         {
             "id": 2,
@@ -16,7 +17,8 @@
             "lastname": "Doe",
             "email": "JohnDoe@gmail.com",
             "photo": "https://www.fbi.gov/wanted/vicap/unidentified-persons/john-doe-21/@@images/image", 
-            "admin": false
+            "admin": false,
+            "handle": "@JohnDoe"
         },
         {
             "id": 3,
@@ -25,7 +27,9 @@
             "lastname": "Musk",
             "email": "ElonMusk@gmail.com",
             "photo": "https://upload.wikimedia.org/wikipedia/commons/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg",
-            "admin": false
+            "admin": false,
+            "handle": "@ElonMusk"
         }
+        
     ]
 }

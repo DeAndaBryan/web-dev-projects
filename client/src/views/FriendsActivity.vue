@@ -3,6 +3,7 @@ import { useSession } from '@/model/session';
 import { ref } from 'vue';
 import { getWorkout } from '@/model/workout';
 import type { Workout } from '@/model/workout';
+import { getUserId } from '@/model/users';
 import { addWorkout } from '@/model/workout';
 
 defineProps<{ workouts: Workout }>();
@@ -11,14 +12,14 @@ const workout = getWorkout();
 const session = useSession();
 const isModalActive = ref(false);
 const newWorkout: Workout = ({} as any) as Workout;
-var date = new Date();
+const date = new Date();
 
 function toggleModal() {isModalActive.value = !isModalActive.value}
 </script>
 
 <template>
     <div class="container" v-if="session.user">
-        <h1 class="title">My Activity</h1>
+        <h1 class="title">Friends Activity</h1>
         <div class="columns " >
             <div class="column is-half is-offset-one-quarter media">
                 <button  v-if="session.user" class="button is-info is-fullwidth"  @click="toggleModal">Add Workout</button>
@@ -87,18 +88,17 @@ function toggleModal() {isModalActive.value = !isModalActive.value}
                 </form>
                 <br>
                 <div v-for="workouts in workout">
-                <div class="box" v-if="session.user.id == workouts.id">
+                <div class="box">
                     <article class="media">
                         <div class="media-left">
                             <figure class="image is-64x64">
-
-                                <img :src="session.user.photo" alt="">
+                                <img :src="getUserId(workouts.id)?.photo" alt="Image">
                             </figure>
                         </div>
                         <div class="media-content">
                             <div class="content">
                                 <p>
-                                    <strong>{{ workouts.fullname }}</strong> <small>{{ session.user.handle }}</small> <small>{{workouts.date}}</small>
+                                    <strong>{{ workouts.fullname }}</strong> <small>{{ getUserId(workouts.id)?.handle }}</small> <small>{{workouts.date}}</small>
                                     <br>
                                     Activity: {{ workouts.name }} for: {{ workouts.duration }} Hr/s
                                     <br>

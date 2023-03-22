@@ -1,5 +1,4 @@
 
-import { login } from '@/model/session'
 import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalized } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StatisticsVue from '@/views/Statistics.vue'
@@ -8,18 +7,20 @@ import LoginVue from '@/views/Login.vue'
 import AdminViewVue from '@/views/AdminView.vue'
 import PeopleSearchVue from '@/views/PeopleSearch.vue'
 import MyActivityVue from '@/views/MyActivity.vue'
+import FriendsActivityVue from '@/views/FriendsActivity.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {path: '/friends', name: 'friends', component: FriendsActivityVue},
     {path: '/myActivity', name: 'myActivity', component: MyActivityVue},
     {path: '/login', name: 'login', component: LoginVue},
     {path: '/Statistics', name: 'Statistics', component: StatisticsVue},
     {path: '/admin', name: 'admin', component: AdminViewVue},
     {path: '/people', name: 'people', component: PeopleSearchVue},
     {
-      path: '/',
+      path: '',
       name: 'home',
       component: HomeView
     },

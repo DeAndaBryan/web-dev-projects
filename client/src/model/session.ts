@@ -7,12 +7,13 @@ const session = reactive({
 
 interface User {
     id?: number;
-    name: string;
+    name?: string;
     firstname?: string;
     lastname?: string;
     photo?: string;
     email?: string;
     admin?: boolean;
+    handle?: string;
 }
 
 export function useSession(){
@@ -27,7 +28,8 @@ export function login(users: User){
         lastname: users.lastname,
         photo: users.photo,
         email: users.email,
-        admin: users.admin
+        admin: users.admin,
+        handle: users.handle
     }
 }
 

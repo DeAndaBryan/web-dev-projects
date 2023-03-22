@@ -7,16 +7,17 @@ export interface User{
     email: string;
     photo: string;
     admin: boolean;
+    handle: string;
 }
 
 export function getUsers(): User[]{
     return data.User;
 }
 
-export function getUserId(id: number): User | null{
-    for (const user of data.User) {
-        if (user.id == id) {
-            return user;
+export function getUserId(id: number): User | null {
+    for (let i = 0; i < data.User.length; i++) {
+        if(data.User[i].id == id){
+            return data.User[i];
         }
     }
     return null;
