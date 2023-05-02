@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { useSession, login, useLogout } from '@/model/session';
+    import { useSession, useLogin, useLogout } from '@/model/session';
     import { getUsers, type User } from '@/model/users'
 
     const session = useSession();
@@ -15,8 +15,8 @@
 
 <template>
     <div class="navbar-item" v-if="session.user">
-        <img :src="session.user.photo">
-        &nbsp {{ session.user.name }}
+        <img :src="session.user.picture">
+        &nbsp {{ session.user.username }}
     </div>
     <div class="navbar-item" v-if="session.user">
         <div class="button">
@@ -27,28 +27,12 @@
     </div>
     <div class="navbar-item" v-else>
                 <div class="buttons">
-                    <a class="button is-primary">
+                    <a class="button is-primary" @click="$router.push('/signup')">
                         <strong>Sign Up</strong>
                     </a>
-                    <div class="dropdown" :class="{'is-active': isDropdownActive}" >
-                        <div class="dropdown-trigger">
-                            <button class="button" :class="{'is-active': isDropdownActive}" @click="$event => isDropdownActive = !isDropdownActive" aria-haspopup="true" aria-controls="dropdown-menu">
-                                <span>Log in</span>
-                                <span class="icon is-small">
-                                    <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                            <div class="dropdown-content" v-for="user in users">
-                                <div class="dropdown-item">
-                                    <a class="buttons" @click="login(user)">
-                                        {{ user.name }}
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <a class="button is-light" @click="$router.push('/login')">
+                        Log in
+                    </a>
                 </div>
             </div>
 </template>

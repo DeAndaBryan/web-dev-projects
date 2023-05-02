@@ -1,13 +1,10 @@
-import { ref } from "vue";
-import data from "../data/workouts.json";
-import { useSession } from "./session";
-
-const work = ref([] as Workout[]);
-work.value = data.workouts;
-const session = useSession();
-
+import type { DataListEnvelope, DataEnvelope } from './fetch';
+import { api } from './session'
 export interface Workout {
-    id: number;
+    id: string;
+    weight: number;
+    reps: number;
+    type: string;
     fullname: string;
     name: string;
     description: string;
@@ -18,27 +15,26 @@ export interface Workout {
     distance: number;
     duration: number;
 }
-export function getWorkout(): Workout[] {
-    return data.workouts;
-}
-export function addWorkout(workout:Workout, date : Date) {
 
-   
-    
-    work.value.push({
-        id : session.user?.id? session.user?.id : 0,
-        fullname: session.user?.name? session.user?.name : "Guest",
-        name: workout.name,
-        description: workout.description,
-        date: JSON.stringify(date),
-        time: workout.time,
-        location: workout.location,
-        image: workout.image,
-        distance: workout.distance,
-        duration: workout.duration,
-    });
+export function getWorkouts(): Promise<DataListEnvelope<Workout>>{
+    return api('workouts')
 }
 
+export function getWorkout(id: string): Promise<DataEnvelope<Workout>>{
+    return api('workouts/' + id)
+}
+
+export function deleteWorkout(id: string){
+    return api('workouts/delete/' + id, null, 'DELETE')
+}
+
+export function updateWorkout(workout: Workout){
+    return api('workouts/update/' + workout.id, workout, 'PATCH')
+}
+
+export function createWorkout(workout: Workout){
+    return api('workouts/create', workout, 'POST')
+}
 
 
 

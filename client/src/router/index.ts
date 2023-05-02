@@ -5,7 +5,6 @@ import StatisticsVue from '@/views/Statistics.vue'
 import { useSession } from '@/model/session'
 import LoginVue from '@/views/Login.vue'
 import AdminViewVue from '@/views/AdminView.vue'
-import PeopleSearchVue from '@/views/PeopleSearch.vue'
 import MyActivityVue from '@/views/MyActivity.vue'
 import FriendsActivityVue from '@/views/FriendsActivity.vue'
 
@@ -18,7 +17,7 @@ const router = createRouter({
     {path: '/login', name: 'login', component: LoginVue},
     {path: '/Statistics', name: 'Statistics', component: StatisticsVue},
     {path: '/admin', name: 'admin', component: AdminViewVue},
-    {path: '/people', name: 'people', component: PeopleSearchVue},
+    {path: '/PRZone', name: 'przone', component: () => import('../views/PRZone.vue')},
     {
       path: '',
       name: 'home',
@@ -31,12 +30,29 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
-    }
+    },
+    {
+      path: '/admin/adduser', 
+      name: 'add-user', 
+      component: () => import('../views/AddUser.vue'), 
+      
+    },
+    {
+      path: '/admin/edituser/:id',
+      name: 'edit-user',
+      component: () => import('../views/AddUser.vue'),
+      
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/signup.vue')
+    },
   ]
 })
 function secureAdmin(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
   const session = useSession();
-  if (session.user?.admin == true) {
+  if (session.user?.isAdmin == true) {
     next();
   } else {
     next('/login');

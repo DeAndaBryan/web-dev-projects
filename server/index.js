@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
     res.send("Server was accessed");
 });
 app
-    .use("/api/v1/products", workouts)
+    .use("/api/v1/workouts", workouts)
     .use("/api/v1/users", users)
 
 app

@@ -15,7 +15,7 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <nav class="navbar is-primary">
+    <nav class="navbar is-black">
         <div class="container">
         <div class="navbar-brand">
           <RouterLink to="/" class="navbar-item" href="">
@@ -50,18 +50,18 @@ import { ref } from 'vue';
                 </span>
                 &nbsp Friends Activity
             </RouterLink>
-            <RouterLink class="navbar-item" to="/people">
+            <RouterLink class="navbar-item" to="/PRZone">
                 <span class="icon">
-                    <i class="fas fa-magnifying-glass"></i>
+                    <i class="fas fa-weight"></i>
                 </span>
-                &nbsp People Search
+                &nbsp PR Zone
             </RouterLink>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
                 Admin
               </a>
               <div class="navbar-dropdown">
-                <RouterLink class="navbar-item" to="/admin" v-if="session.user?.admin == true">
+                <RouterLink class="navbar-item" to="/admin" v-if="session.user?.isAdmin == true">
                   Users
                 </RouterLink>
               </div>

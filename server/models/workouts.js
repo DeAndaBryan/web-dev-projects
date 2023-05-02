@@ -10,9 +10,17 @@ const workoutSchema = new Schema({
         type: String,
         required: [true, 'Workout name is required'],
     },
-    description: {
+    type: {
         type: String,
-        required: [true, 'Workout description is required'],
+        required: [true, 'Workout type is required'],
+    },
+    location: {
+        type: String,
+        required: [true, 'Workout location is required'],
+    },
+    comment: {
+        type: String,
+        required: [false, 'Workout description is required'],
     },
     image: {
         type: String,
@@ -20,19 +28,19 @@ const workoutSchema = new Schema({
     },
     time: {
         type: Number,
-        required: [true, 'Workout time is required'],
+        required: [false, 'Workout time is required'],
     },
     date: {
         type: Date,
-        required: [true, 'Workout date is required'],
+        default: Date.now,
     },
     weight: {
         type: Number,
-        required: [true, 'Workout weight is not required'],
+        required: [false, 'Workout weight is not required'],
     },
     reps: {
         type: Number,
-        required: [true, 'Workout reps is not required'],
+        required: [false, 'Workout reps is not required'],
     },
 });
 
