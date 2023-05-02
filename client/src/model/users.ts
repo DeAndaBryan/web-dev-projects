@@ -1,24 +1,21 @@
-import data from "../data/users.json";
+import { api } from './session'
 export interface User{
-    id: number;
-    name: string;
     firstname: string;
     lastname: string;
+    username: string;
     email: string;
-    photo: string;
+    picture: string;
     admin: boolean;
-    handle: string;
 }
 
-export function getUsers(): User[]{
-    return data.User;
-}
-
-export function getUserId(id: number): User | null {
-    for (let i = 0; i < data.User.length; i++) {
-        if(data.User[i].id == id){
-            return data.User[i];
-        }
-    }
-    return null;
-}
+export function getUsers(): Promise<DataListEnvelope<Users>> {
+    return api('users')
+  }
+  
+  export function getUser(id: string): Promise<DataEnvelope<Users>> {
+    return api('users/' + id)
+  }
+  
+  export function deleteUser(id: string) {
+    return api('users/delete/' + id, null, 'DELETE')
+  }
