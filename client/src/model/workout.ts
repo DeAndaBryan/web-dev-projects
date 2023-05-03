@@ -1,19 +1,20 @@
 import type { DataListEnvelope, DataEnvelope } from './fetch';
 import { api } from './session'
 export interface Workout {
-    id: string;
-    weight: number;
-    reps: number;
+    id?: string;
+    weight?: number;
+    reps?: number;
     type: string;
-    fullname: string;
     name: string;
-    description: string;
+    comment?: string;
     date: string;
-    time: string;
+    time?: string;
     location: string;
-    image: string;
-    distance: number;
-    duration: number;
+    image?: string;
+    distance?: number;
+    duration?: number;
+    userPhoto?: string;
+    userName?: string;
 }
 
 export function getWorkouts(): Promise<DataListEnvelope<Workout>>{

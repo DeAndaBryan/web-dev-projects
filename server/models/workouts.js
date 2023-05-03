@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
+
 const workoutSchema = new Schema({
     id: {
         type: String,
@@ -26,7 +27,7 @@ const workoutSchema = new Schema({
         type: String,
         required: [false, 'Workout image is not required'],
     },
-    time: {
+    duration: {
         type: Number,
         required: [false, 'Workout time is required'],
     },
@@ -41,6 +42,14 @@ const workoutSchema = new Schema({
     reps: {
         type: Number,
         required: [false, 'Workout reps is not required'],
+    },
+    userPhoto: {
+        type: String,
+        required: [true, 'Workout userPhoto is not required'],
+    },
+    userName: {
+        type: String,
+        required: [true, 'Workout userName is not required'],
     },
 });
 
