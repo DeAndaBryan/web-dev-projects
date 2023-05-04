@@ -51,6 +51,7 @@ export function useLogin() {
      session.user = {
       ...user
     }
+    session.user.token = user.token
     router.push('/myActivity')
     session.redirectUrl = null
   }
