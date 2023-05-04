@@ -22,6 +22,13 @@ export function useSession() {
 
 export function api(url: string, data?: any, method?: string, headers?: any) {
   session.isLoading = true
+  if(session.user?.token){
+    headers = {
+      "Authorization": `Bearer ${session.user.token}`,
+      ...headers
+    }
+  }
+
   return myFetch
     .api(url, data, method, headers)
     .catch((err) => {
@@ -40,11 +47,11 @@ export function api(url: string, data?: any, method?: string, headers?: any) {
 export function useLogin() {
   const router = useRouter()
 
-  return function (user: User) {
-    session.user = {
+  return async function (user: User) {
+     session.user = {
       ...user
     }
-    router.push(session.redirectUrl ?? '/')
+    router.push('/myActivity')
     session.redirectUrl = null
   }
 }

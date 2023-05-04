@@ -9,6 +9,7 @@ export interface User{
     password: string;
     picture: string;
     isAdmin: boolean;
+    token?: string;
 }
 
 export function getUsers(): Promise<DataListEnvelope<User>> {
