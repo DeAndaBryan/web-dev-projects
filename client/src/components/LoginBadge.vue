@@ -19,8 +19,8 @@
         &nbsp {{ session.user.username }}
     </div>
     <div class="navbar-item" v-if="session.user">
-        <div class="button">
-            <a class="buttons" @click="logout2()">
+        <div class="buttons">
+            <a class="button" @click="logout2()">
                 <strong>Logout</strong>
             </a>
         </div>
