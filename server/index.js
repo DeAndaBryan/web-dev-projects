@@ -16,6 +16,8 @@ mongoose.connect(mongoString).catch((error) => {
 
 const db = mongoose.connection;
 
+app.use(cors());
+
 app
     .use(express.json())
     .use(express.static(path.join(__dirname, "../client/dist")))
