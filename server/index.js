@@ -7,6 +7,7 @@ const users = require("./controllers/users");
 const workouts = require("./controllers/workouts");
 const hostname = "127.0.0.1";
 const app = express();
+var cors = require('cors')
 
 const port = 3000;
 
