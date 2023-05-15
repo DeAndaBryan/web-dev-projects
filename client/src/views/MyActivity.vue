@@ -93,7 +93,7 @@ function delWorkout(id: string) {
                                     </nav>
                                 </div>
                                 <div class="media-right">
-                                    <button class="delete" @click="delWorkout(workouts._id)"></button>
+                                    <button class="delete" @click="delWorkout(session.user._id)"></button>
                                 </div>
                             </article>
                         </div>
