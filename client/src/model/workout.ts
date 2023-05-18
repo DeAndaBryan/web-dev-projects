@@ -1,8 +1,10 @@
 import type { DataListEnvelope, DataEnvelope } from './fetch';
 import { api } from './session'
 export interface Workout {
+    _id?: string;
     id?: string;
     weight?: number;
+    sets?: number;
     reps?: number;
     type: string;
     name: string;
@@ -11,8 +13,6 @@ export interface Workout {
     time?: string;
     location: string;
     image?: string;
-    distance?: number;
-    duration?: number;
     userPhoto?: string;
     userName?: string;
 }

@@ -21,7 +21,7 @@ async function loginUser() {
     'POST'
   ).then((response) => {
     if (response != undefined) {
-      session.redirectUrl = '/home'
+      session.redirectUrl = '/myActivity'
       login(response.data)
       error.value = false
     } else {

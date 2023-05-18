@@ -35,37 +35,38 @@ const router = createRouter({
       path: '/admin/adduser', 
       name: 'add-user', 
       component: () => import('../views/AddUser.vue'), 
+      beforeEnter: secureAdmin
       
     },
     {
       path: '/admin/edituser/:id',
       name: 'edit-user',
       component: () => import('../views/AddUser.vue'),
-      
+      beforeEnter: secureAdmin
     },
     {
       path: '/signup',
       name: 'signup',
-      component: () => import('../views/signup.vue')
+      component: () => import('../views/SignUp.vue')
+    },
+    {
+      path: '/addworkout',
+      name: 'addworkout',
+      component: () => import('../views/AddWorkout.vue')
     },
   ]
 })
+
+export default router
+
 function secureAdmin(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
   const session = useSession();
   if (session.user?.isAdmin == true) {
     next();
   } else {
-    next('/login');
+    router.push('/login');
   }
 }
 
-function secureRoute(to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext) {
-  const session = useSession();
-  if (session.user) {
-    next();
-  } else {
-    next('/login');
-  }
-}
 
-export default router
+

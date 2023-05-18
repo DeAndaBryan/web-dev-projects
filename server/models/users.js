@@ -21,7 +21,7 @@ const userSchema = new Schema({
     },
     email: {
         type: String,
-        required: [true, 'Email is required'],
+        required: [false, 'Email is required'],
         unique: true,
         lowercase: true,
         trim: true,
@@ -33,7 +33,8 @@ const userSchema = new Schema({
     },
     picture: {
         type: String,
-        required: [true, 'Picture is not required'],
+        required: [false, 'Picture is not required'],
+        default: 'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-18.jpg',
     },
     isAdmin: {
         type: Boolean,

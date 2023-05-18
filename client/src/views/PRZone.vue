@@ -18,20 +18,20 @@ const photo = ref('')
 const comments = ref('')
 const name = ref('')
 
-function addWokrout(name: string, weight: number, reps: number, location: string, photo: string, comments: string){
+function addWokrout(name: string, weight: number, reps: number, location: string, photo: string, comments: string) {
     createWorkout({
-    id: user?._id,
-    weight: weight,
-    reps: reps,
-    location: location,
-    image: photo,
-    comment: comments,
-    name: name,
-    type: workoutType,
-    userPhoto: user?.picture,
-    userName: user?.username,
-    date: ''
-})
+        id: user?._id,
+        weight: weight,
+        reps: reps,
+        location: location,
+        image: photo,
+        comment: comments,
+        name: name,
+        type: workoutType,
+        userPhoto: user?.picture,
+        userName: user?.username,
+        date: ''
+    })
     toggleModal()
     router.push('/PRZone')
 }
@@ -52,17 +52,19 @@ getWorkouts().then((data) => {
         <div class="columns ">
             <div class="column is-half is-offset-one-quarter media">
                 <button v-if="session.user" class="button is-info is-fullwidth" @click="toggleModal">Add New PR</button>
-                <form @submit.prevent="addWokrout(name, weight, reps, location, photo, comments)" class="modal" :class="{'is-active' : isModalActive}">
+                <form @submit.prevent class="modal"
+                    :class="{ 'is-active': isModalActive }">
                     <div class="modal-background"></div>
                     <div class="modal-content">
-                        <header class="modal-card-head"> 
+                        <header class="modal-card-head">
                             Log new PR
                         </header>
                         <section class="modal-card-body">
                             <div class="field">
                                 <label class="label">Username</label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Date" :value=session.user.username disabled >
+                                    <input class="input" type="text" placeholder="Date" :value=session.user.username
+                                        disabled>
                                 </div>
                             </div>
 
@@ -71,7 +73,8 @@ getWorkouts().then((data) => {
                                     User Photo
                                 </label>
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="Photo" :value=session.user.picture disabled >
+                                    <input class="input" type="text" placeholder="Photo" :value=session.user.picture
+                                        disabled>
                                 </div>
                             </div>
 
@@ -81,7 +84,7 @@ getWorkouts().then((data) => {
                                 </label>
                                 <div class="select is-full-width">
                                     <select>
-                                        <option value="PR" selected >PR</option>
+                                        <option value="PR" selected>PR</option>
                                         <option value="Workout" selected disabled>Workout</option>
                                     </select>
                                 </div>
@@ -142,7 +145,7 @@ getWorkouts().then((data) => {
                             </div>
                         </section>
                         <footer class="modal-card-foot">
-                            <button class="button is-success" type="submit">Save changes</button>
+                            <button class="button is-success" @click="addWokrout(name, weight, reps, location, photo, comments)">Save changes</button>
                             <button class="button" @click="toggleModal()">Cancel</button>
                         </footer>
                     </div>
@@ -150,56 +153,91 @@ getWorkouts().then((data) => {
             </div>
         </div>
         <br>
-        <div v-for="workouts in workout">
-            <div v-if="workouts.type = workoutType">
-                <div class="box">
-                    <article class="media">
-                        <div class="media-left">
-                            <figure class="image is-64x64">
-                                <img :src="workouts.userPhoto" alt="Image">
-                            </figure>>
-                        </div>
-                        <div class="media-content">
-                            <div class="content">
-                                <p>
-                                    <strong>{{ workouts.userName }}</strong> <small>{{ workouts.date }}</small>
-                                    <br>
-                                    Weight: {{ workouts.weight }} for: {{ workouts.reps }}
-                                    <br>
-                                    Location: {{ workouts.location }}
-                                    <br>
-                                    {{ workouts.comment }}
-                                    <br>
-                                </p>
-                                <figure v-if="workouts.image?.length > 1 && workouts.image !== undefined" class="image is-256x256">
-                                    <img :src="workouts.image" alt="Image">
-                                </figure>
-                            </div>
-                            <nav class="level is-mobile">
-                                <div class="level-left">
-                                    <a class="level-item" aria-label="reply">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-reply" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
-                                    <a class="level-item" aria-label="retweet">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-retweet" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
-                                    <a class="level-item" aria-label="like">
-                                        <span class="icon is-small">
-                                            <i class="fas fa-heart" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
+
+        <div class="columns ">
+            <div class="column is-half is-offset-one-quarter media">
+                <div v-for="workouts in workout.slice().reverse()">
+                    <div v-if="workouts.type = workoutType">
+                        <div class="box">
+                            <article class="media">
+                                <div class="media-left">
+                                    <figure class="image userPic is-64x64">
+                                        <img :src="workouts.userPhoto" alt="Image">
+                                    </figure>
                                 </div>
-                            </nav>
+                                <div class="media-content">
+                                    <div class="content">
+                                        <p>
+                                            <strong>{{ workouts.userName }}</strong> <small>{{ workouts.date }}</small>
+                                            <hr>
+                                            <strong>Workout Type</strong>: {{ workouts.name }}
+                                            <br>
+                                            <strong>Weight</strong>: {{ workouts.weight }} lbs <strong>for</strong>: {{
+                                                workouts.reps }} rep/s
+                                            <br>
+                                            <strong>Location</strong>: {{ workouts.location }}
+                                            <br>
+                                            {{ workouts.comment }}
+                                            <br>
+                                        </p>
+                                        <figure v-if="workouts.image ? true : false" class="image workoutPic is-256x256">
+                                            <img :src="workouts.image" alt="Image">
+                                        </figure>
+                                    </div>
+                                    <nav class="level is-mobile">
+                                        <div class="level-left">
+                                            <a class="level-item" aria-label="reply">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-reply" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+                                            <a class="level-item" aria-label="retweet">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-retweet" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+                                            <a class="level-item" aria-label="like">
+                                                <span class="icon is-small">
+                                                    <i class="fas fa-heart" aria-hidden="true"></i>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </article>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.box {
+    margin-bottom: 20px;
+}
+
+.workoutPic {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: black 0px 0px 7px;
+}
+
+.userPic {
+    border-radius: 50%;
+}
+
+hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.box {
+    border-radius: 30px;
+    box-shadow: black 0px 0px 6px;
+    background-color: darkgray;
+}
+
+</style>

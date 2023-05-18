@@ -11,9 +11,8 @@ const route = useRoute();
 
 function save(){
     createUser(user.value).then((data) => {
-      if(data === true){
+      if(data){
         addMessage('User created', 'success')
-        alert("User created")
         router.push('/login')
       } else {
         addMessage('User already exists', 'danger')
