@@ -15,6 +15,7 @@ export interface Workout {
     image?: string;
     userPhoto?: string;
     userName?: string;
+    taggedUsers?: string[];
 }
 
 export function getWorkouts(): Promise<DataListEnvelope<Workout>>{

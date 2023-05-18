@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useSession } from '@/model/session';
-import { getUser } from '@/model/users';
+import { getUser, getUsers } from '@/model/users';
 import { getWorkouts, type Workout, createWorkout } from '@/model/workout';
 import router from '@/router';
-import { ref } from 'vue';
+import { ref, defineComponent, computed } from 'vue';
+import AutoComplete from 'primevue/autocomplete';
 
 const session = useSession();
 const isModalActive = ref(false);
@@ -17,6 +18,26 @@ const photo = ref('')
 const comments = ref('')
 const name = ref('')
 const sets = ref(0)
+
+let namedata = [ getUsers().then((res) => res.data.map((user) => user.username))]
+
+const data = [
+    "bdeanda",
+    "jdoe",
+    "michmsosa",
+    "jdeanda"
+];
+
+
+const names = ref('');
+    const selected = ref(null);
+    
+    const filteredDataArray = computed(() =>
+      data.filter(
+        (option) =>
+          option.toString().toLowerCase().indexOf(name.value.toLowerCase()) >= 0
+      )
+    );
 
 function addWokrout(name: string, weight: number, reps: number, location: string, photo: string, comments: string, sets: number) {
     createWorkout({
@@ -40,6 +61,7 @@ function cancel() {
     history.back()
 }
 </script>
+
 
 <template>
     <div class="container">
@@ -119,6 +141,24 @@ function cancel() {
                                 </div>
                             </div>
 
+                            <section>
+    <p class="content"><b>Selected:</b> {{ selected }}</p>
+    <o-field label="Tag A Friend">
+      <o-autocomplete
+        v-model="names"
+        rounded
+        expanded
+        placeholder="Enter name"
+        icon="search"
+        clearable
+        :data="filteredDataArray"
+        @select="(option: null) => (selected = option)"
+      >
+        <template #empty>No results found</template>
+      </o-autocomplete>
+    </o-field>
+  </section>
+
                             <div class="field is-grouped">
                                 <div class="control">
                                     <button class="button is-success"
@@ -145,6 +185,7 @@ function cancel() {
 .label {
     color: white;
 }
+
 .box {
     margin-top: 20px;
 }
