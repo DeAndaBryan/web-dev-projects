@@ -1,6 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1/';  // Fallback to localhost for development
 
-export function rest(url: string, data?: any, method?: string, headers?: any){
+export function rest(url: string, data?: any, method?: string, headers?: any) {
     return fetch(url, {
         method: method ?? (data ? 'POST' : 'GET'),
         headers: {
@@ -9,16 +9,17 @@ export function rest(url: string, data?: any, method?: string, headers?: any){
         },
         body: data ? JSON.stringify(data) : undefined,
     })
-        .then(res => res.ok 
-            ? res.json() 
-            : res.json().then(x => { throw({ ...x, message: x.error }) })
-        );
+    .then(res => res.ok 
+        ? res.json() 
+        : res.json().then(x => { throw({ ...x, message: x.error }) })
+    );
 }
 
 export function api(url: string, data?: any, method?: string, headers?: any) {
     return rest(API_URL + url, data, method, headers);
 }
 
+// Data Envelope Interfaces
 export interface DataEnvelope<T> {
   data: T;
   success: boolean;
@@ -30,8 +31,3 @@ export interface DataListEnvelope<T> {
   success: boolean;
   message?: string;
 }
-
-export function rest<T>(url: string, method = 'GET', body?: any): Promise<T> {
-  // Some logic for making HTTP requests
-}
-
