@@ -5,59 +5,51 @@ const mongoString = process.env.DATABASE_URL;
 const path = require("path");
 const users = require("./controllers/users");
 const workouts = require("./controllers/workouts");
-const hostname = "127.0.0.1";
 const app = express();
-var cors = require('cors')
+const cors = require("cors");
 
-const port = 3000;
+const port = process.env.PORT || 3000; // Use environment variable for the port
 
-mongoose.connect(mongoString).catch((error) => {
-    console.log(error);
-});
+// MongoDB connection
+mongoose
+  .connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((error) => console.error("Error connecting to MongoDB", error));
 
 const db = mongoose.connection;
 
-app.use(cors());
+// Middleware setup
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "*", // Use your frontend URL here
+    methods: "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
+  })
+);
 
-app
-    .use(express.json())
-    .use(express.static(path.join(__dirname, "../client/dist")))
-    .use((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', '*')
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-        res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS')
-        next()
-    });
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 app.get("/", (req, res) => {
-    res.send("Server was accessed");
+  res.send("Server was accessed");
 });
-app
-    .use("/api/v1/workouts", workouts)
-    .use("/api/v1/users", users)
 
-app
-    .get("/api/v1/users", users) 
-    .get("/api/v1/workouts", workouts)
+app.use("/api/v1/workouts", workouts);
+app.use("/api/v1/users", users);
 
-app
-    .get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'))
-})
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 app.listen(port, () => {
-    console.log(`Listening at http://${hostname}:${port}`);
+  console.log(`Listening on port ${port}`);
 });
 
+// Error handling for MongoDB
 db.on("error", (error) => {
-    console.log(error);
+  console.log(error);
 });
 
 db.once("connected", () => {
-    console.log("Connected to MongoDB");
+  console.log("Connected to MongoDB");
 });
-
-
-
-
-
