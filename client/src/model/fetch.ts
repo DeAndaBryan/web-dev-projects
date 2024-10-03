@@ -1,4 +1,4 @@
-const API_URL = (import.meta as any).env.VITE_API_URL || 'http://localhost:3000/api/v1/';  // Fallback to localhost for development
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1/';  // Fallback to localhost for development
 
 export function rest(url: string, data?: any, method?: string, headers?: any){
     return fetch(url, {
