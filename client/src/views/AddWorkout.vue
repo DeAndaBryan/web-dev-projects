@@ -5,6 +5,7 @@ import { getWorkouts, type Workout, createWorkout } from '@/model/workout';
 import router from '@/router';
 import { ref, defineComponent, computed } from 'vue';
 import AutoComplete from 'primevue/autocomplete';
+import { User } from '@/model/users';
 
 const session = useSession();
 const isModalActive = ref(false);
@@ -19,7 +20,8 @@ const comments = ref('')
 const name = ref('')
 const sets = ref(0)
 
-let namedata = [ getUsers().then((res) => res.data.map((user) => user.username))]
+let namedata = [getUsers().then((res) => res.data.map((user: User) => user.username))];
+
 
 const data = [
     "bdeanda",
@@ -30,16 +32,16 @@ const data = [
 
 
 const names = ref('');
-    const selected = ref(null);
-    
-    const filteredDataArray = computed(() =>
-      data.filter(
-        (option) =>
-          option.toString().toLowerCase().indexOf(name.value.toLowerCase()) >= 0
-      )
-    );
+const selected = ref(null);
 
-function addWokrout(name: string, weight: number, reps: number, location: string, photo: string, comments: string, sets: number) {
+const filteredDataArray = computed(() =>
+    data.filter(
+        (option) =>
+            option.toString().toLowerCase().indexOf(name.value.toLowerCase()) >= 0
+    )
+);
+
+function addWorkout(name: string, weight: number, reps: number, location: string, photo: string, comments: string, sets: number) {
     createWorkout({
         id: user?._id,
         weight: weight,
@@ -56,6 +58,7 @@ function addWokrout(name: string, weight: number, reps: number, location: string
     })
     history.back()
 }
+
 
 function cancel() {
     history.back()
@@ -142,28 +145,23 @@ function cancel() {
                             </div>
 
                             <section>
-    <p class="content"><b>Selected:</b> {{ selected }}</p>
-    <o-field label="Tag A Friend">
-      <o-autocomplete
-        v-model="names"
-        rounded
-        expanded
-        placeholder="Enter name"
-        icon="search"
-        clearable
-        :data="filteredDataArray"
-        @select="(option: null) => (selected = option)"
-      >
-        <template #empty>No results found</template>
-      </o-autocomplete>
-    </o-field>
-  </section>
+                                <p class="content"><b>Selected:</b> {{ selected }}</p>
+                                <o-field label="Tag A Friend">
+                                    <o-autocomplete v-model="names" rounded expanded placeholder="Enter name"
+                                        icon="search" clearable :data="filteredDataArray"
+                                        @select="(option: null) => (selected = option)">
+                                        <template #empty>No results found</template>
+                                    </o-autocomplete>
+                                </o-field>
+                            </section>
 
                             <div class="field is-grouped">
                                 <div class="control">
                                     <button class="button is-success"
-                                        @click="addWokrout(name, weight, reps, location, photo, comments, sets)">Save
-                                        changes</button>
+                                        @click="addWorkout(name, weight, reps, location, photo, comments, sets)">
+                                        Save changes
+                                    </button>
+
                                 </div>
                                 <div class="control">
                                     <button @click="cancel()" class="button is-link is-danger">Cancel</button>

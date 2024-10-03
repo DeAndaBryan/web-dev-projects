@@ -123,9 +123,11 @@ function cancel() {
 .field {
   margin-bottom: 1.5rem;
 }
+
 .button {
   margin-top: 2rem;
 }
+
 .container {
   margin-top: 2rem;
 }

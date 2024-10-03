@@ -18,3 +18,20 @@ export function rest(url: string, data?: any, method?: string, headers?: any){
 export function api(url: string, data?: any, method?: string, headers?: any) {
     return rest(API_URL + url, data, method, headers);
 }
+
+export interface DataEnvelope<T> {
+  data: T;
+  success: boolean;
+  message?: string;
+}
+
+export interface DataListEnvelope<T> {
+  data: T[];
+  success: boolean;
+  message?: string;
+}
+
+export function rest<T>(url: string, method = 'GET', body?: any): Promise<T> {
+  // Some logic for making HTTP requests
+}
+
